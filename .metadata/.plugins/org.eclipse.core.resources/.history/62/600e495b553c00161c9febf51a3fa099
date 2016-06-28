@@ -1,0 +1,13 @@
+package strategy;
+/**
+ * ²âÊÔ²ßÂÔÄ£Ê½
+ * @author Admain
+ *
+ */
+public class Client {
+	public static void main(String[] args) {
+		Strategy s1=new NewCustromerManyStratefy();
+		Context context=new Context(s1);
+		context.printPrice(998);
+	}
+}

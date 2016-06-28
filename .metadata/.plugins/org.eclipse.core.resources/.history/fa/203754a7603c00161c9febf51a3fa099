@@ -1,0 +1,37 @@
+package FianlSever;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+/**
+ * 增加对各种Servlet的映射，各种类的封装
+ * @author Admain
+ *
+ */
+public class ArduinoServer {
+	private ServerSocket server=null;
+	private boolean isShutdown=false;
+	/**
+	 *启动服务器
+	 */
+	private void start(int port){
+		try {
+			server=new ServerSocket(port);
+			this.receive();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	/**
+	 * 接受客户端响应
+	 * @throws IOException 
+	 */
+	private void receive() throws IOException{
+		int i=0;
+		while(!isShutdown){
+			Socket client=server.accept();
+			
+		}
+	}
+}

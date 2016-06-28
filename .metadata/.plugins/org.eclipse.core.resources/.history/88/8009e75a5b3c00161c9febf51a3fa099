@@ -1,0 +1,10 @@
+package state;
+
+/**
+ * 
+ * @author Admain
+ *
+ */
+public class Context {
+
+}

@@ -1,0 +1,10 @@
+package proxy.staticProxy;
+
+/**
+ * 代理类，进行明星的代理
+ * @author Admain
+ *
+ */
+public class proxyStar {
+
+}

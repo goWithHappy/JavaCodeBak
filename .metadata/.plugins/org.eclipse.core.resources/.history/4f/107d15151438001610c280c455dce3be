@@ -1,0 +1,10 @@
+package adapter;
+
+/**
+ * 客户端类相当于笔记本
+ * @author Admain
+ *
+ */
+public class Client {
+	
+}

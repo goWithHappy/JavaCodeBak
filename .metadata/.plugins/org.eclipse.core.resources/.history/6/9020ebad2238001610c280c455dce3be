@@ -1,0 +1,35 @@
+package bridge;
+
+public abstract class Computer {
+	protected Brand brand; //电脑天然具备了品牌属性
+	public Computer(Brand brand) {
+		// TODO Auto-generated constructor stub
+		this.brand=brand;
+	}
+	abstract void sale();
+}
+class Desktop extends Computer{
+
+	public Desktop(Brand brand) {
+		super(brand);
+	}
+
+	@Override
+	void sale() {
+		System.out.println("销售台式本！");
+	}
+	
+}
+class Laptop extends Computer{
+
+	public Laptop(Brand brand) {
+		super(brand);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	void sale() {
+		System.out.println("销售笔记本！！");
+	}
+	
+}

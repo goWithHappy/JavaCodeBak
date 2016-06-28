@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy package &apos;FianlSever&apos; to &apos;ArduinoServer/src&apos;&#x0D;&#x0A;- Original project: &apos;Httpsever&apos;&#x0D;&#x0A;- Destination element: &apos;ArduinoServer/src&apos;&#x0D;&#x0A;- Original element: &apos;Httpsever/src/FianlSever&apos;" description="Copy package" destination="=ArduinoServer/src" element1="/src&lt;FianlSever" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1467011823161" version="1.0"/>
+</session>

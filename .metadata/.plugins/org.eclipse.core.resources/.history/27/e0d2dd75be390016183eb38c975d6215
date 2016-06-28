@@ -1,0 +1,9 @@
+package flyWeight;
+/**
+ * ÏíÔªÀà
+ * @author Admain
+ *
+ */
+public interface ChessFlyWeight {
+
+}

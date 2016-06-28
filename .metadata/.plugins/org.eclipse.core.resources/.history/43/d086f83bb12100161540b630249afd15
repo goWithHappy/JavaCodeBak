@@ -1,0 +1,10 @@
+package test;
+
+/**
+ * 测试java.lang.Class对象的获取方式
+ * @author Admain
+ *
+ */
+public class Demo01 {
+
+}

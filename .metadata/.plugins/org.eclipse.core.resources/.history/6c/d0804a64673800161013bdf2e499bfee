@@ -1,0 +1,9 @@
+package demo;
+/**
+ * 存储被搜素的基本资源
+ * @author Admain
+ *
+ */
+public class Source {
+	
+}

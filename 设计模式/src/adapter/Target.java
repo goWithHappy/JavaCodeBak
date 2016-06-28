@@ -1,0 +1,9 @@
+package adapter;
+/**
+ * 目标适配接口
+ * @author Admain
+ *
+ */
+public interface Target {
+	void handleReq();
+}

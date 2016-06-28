@@ -1,0 +1,7 @@
+package proxy.dynamicProxy;
+
+public class Client {
+	public static void main(String[] args) {
+		Star realStar=new RealStar();
+	}
+}

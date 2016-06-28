@@ -1,0 +1,11 @@
+package faceStyle;
+
+/**
+ * 代理注册公司的蒙面对象
+ * @author Admain
+ *
+ */
+public class RegisterFacade {
+	
+	
+}

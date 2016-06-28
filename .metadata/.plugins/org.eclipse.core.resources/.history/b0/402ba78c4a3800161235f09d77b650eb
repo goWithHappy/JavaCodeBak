@@ -1,0 +1,6 @@
+package Test;
+
+public class Test {
+	int a;
+	a=a+10;
+}

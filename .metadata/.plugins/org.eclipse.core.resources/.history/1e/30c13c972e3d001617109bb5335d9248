@@ -1,0 +1,34 @@
+package regex;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+/**
+ * Õ¯¬Á≈¿≥Ê
+ * @author Admain
+ *
+ */
+public class Splider {
+	public static void main(String[] args) {
+	
+	}
+	public String getSource(Url url){
+		String source="";
+		String temp="";
+		try {
+			BufferedReader reader=new BufferedReader(new InputStreamReader(url.openStream()));
+			while((temp=reader.readLine())!=null){
+				source+=temp;
+			}
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}finally{
+			System.out.println(source);
+		}
+	}
+}

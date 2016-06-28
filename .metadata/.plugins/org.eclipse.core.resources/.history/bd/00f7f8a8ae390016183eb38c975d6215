@@ -1,0 +1,11 @@
+package faceStyle;
+
+/**
+ * 未使用外观模式时注册公司
+ * @author Admain
+ *
+ */
+public class Client  {
+	工商局 a=new 北京工商局();
+	a.
+}

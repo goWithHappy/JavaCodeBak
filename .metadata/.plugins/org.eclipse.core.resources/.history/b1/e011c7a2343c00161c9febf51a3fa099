@@ -1,0 +1,17 @@
+package mediator;
+
+public class Finacial implements Department{
+
+	@Override
+	public void selfAction() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void outAction() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

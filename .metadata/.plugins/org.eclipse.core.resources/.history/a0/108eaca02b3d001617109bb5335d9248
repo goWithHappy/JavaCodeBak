@@ -1,0 +1,17 @@
+package regex;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Demo {
+	public static void main(String[] args) {
+		//找出字符串数组
+		String s="www.baidu.com123";
+		//表达式对象
+		Pattern p=Pattern.compile("\\w");
+		//创建Matcher对象
+		Matcher m=p.matcher(s);
+		boolean ishave=m.matches();
+		System.out.println(ishave);
+	}
+}
