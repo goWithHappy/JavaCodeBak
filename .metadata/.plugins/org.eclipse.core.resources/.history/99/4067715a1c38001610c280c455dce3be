@@ -1,5 +1,0 @@
-package proxy.dynamicProxy;
-
-public interface StarHandler {
-
-}

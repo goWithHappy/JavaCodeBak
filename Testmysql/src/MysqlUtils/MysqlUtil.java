@@ -22,15 +22,14 @@ public class MysqlUtil {
 	 * 通过静态块来加载驱动所需要的文件
 	 * @return
 	 */
-	static Properties pros=new Properties();
+	private static Properties pros=null;  //帮助我们处理资源文件配置信息
 	static{
 		try {
-//			pros.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("./db.properties"));
-			pros.load(new FileInputStream("db.properties"));
-			System.out.println("加载文件成功！");
-			System.out.println(pros.getProperty("mysqlDriver"));
-			System.out.println(pros.getProperty("mysqlURL"));
-			System.out.println(pros.getProperty("mysqlUser"));
+			pros=new Properties();
+//			pros.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("db.properties"));
+			FileInputStream in = new FileInputStream("db.properties");
+			pros.load(in);
+			in.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.out.println("配置文件加载时出错！");

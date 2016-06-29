@@ -1,0 +1,9 @@
+package testORM;
+/**
+ * 与数据库中的emp表相互对应
+ * @author Admain
+ *
+ */
+public class Emp {
+
+}
