@@ -1,0 +1,10 @@
+package beans;
+
+/**
+ * 管理配置信息
+ * @author Admain
+ *
+ */
+public class Configuration {
+
+}

@@ -1,0 +1,6 @@
+Driver=com.mysql.jdbc.Driver
+URL=jdbc\:mysql\://localhost\:3306/orm
+lUser=root
+sqlPwd=19950903a
+usingDB=mysql
+srcPath=E:\java\SORM\src\

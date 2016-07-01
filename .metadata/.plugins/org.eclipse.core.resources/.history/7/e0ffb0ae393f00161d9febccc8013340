@@ -1,0 +1,21 @@
+package beans;
+/**
+ * 封装表中一个字段的信息
+ * @author Admain
+ *
+ */
+public class ColumnInfo {
+	/**
+	 * 字段名称
+	 */
+	private String name;
+	/**
+	 * 字段的数据类型
+	 */
+	private String dataType;
+	/**
+	 * 字段的键的类型（0：普通键 1：主键 2：外键）
+	 */
+	private int keyType;
+	
+}

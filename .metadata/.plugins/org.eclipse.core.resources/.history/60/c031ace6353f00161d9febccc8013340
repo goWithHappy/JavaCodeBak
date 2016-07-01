@@ -1,0 +1,40 @@
+package core;
+
+/**
+ * 负责查询（对外提供服务的核心类）
+ * @author Admain
+ *
+ */
+public interface Query {
+	/**
+	 * 执行一个DML语句
+	 * @param sql
+	 * @param params
+	 * @return 执行sql语句之后影响的行数
+	 */
+	public int executeDML(String sql,Object[] params);
+	/**
+	 * 将一个对象存储到数据库中
+	 * @param object 要存储的对象
+	 */
+	public void insert(Object object);
+	/**
+	 * 删除clazz表示类对应的表中记录（指定主键值id的记录）
+	 * @param clazz 根表对应的class对象
+	 * @param id
+	 */
+	public void delete(Class clazz,int id); //delete from user where id=?
+	/**
+	 * 删除对象在数据库中的记录（对象所在的类，对象的主键的值对应的记录）
+	 * @param obj
+	 */
+	public void delete(Object obj);
+	/**
+	 * 更新对象指定的记录，并且只更新指定字段的值
+	 * @param obj
+	 * @param fileName
+	 * @return
+	 */
+	public int update(Object obj,String[] fileName);//update user set uname=?,pwd=?
+	
+}

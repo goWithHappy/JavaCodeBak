@@ -1,9 +1,0 @@
-package Test;
-
-public class Test {
-	public static void main(String[] args) {
-		/**int a;
-		a=a+10;  如果不初始化编译时会出现问题
-		*/
-	}
-}
