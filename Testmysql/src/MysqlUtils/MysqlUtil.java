@@ -40,7 +40,7 @@ public class MysqlUtil {
 	{
 		
 		try {
-			Class.forName(pros.getProperty("mysqlDriver"));
+			Class.forName(pros.getProperty("driver"));
 			return (Connection) DriverManager.getConnection(pros.getProperty("mysqlURL"),pros.getProperty("mysqlUser"),pros.getProperty("mysqlPwd"));
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
