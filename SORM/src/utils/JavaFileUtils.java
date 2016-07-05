@@ -1,8 +1,15 @@
 package utils;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import beans.ColumnInfo;
 import beans.JavaFieldGetSet;
+import beans.TableInfo;
+import core.DBManager;
 import core.MysqlTypeConvertor;
+import core.TableContext;
 import core.TypeConvertor;
 
 /**
@@ -38,9 +45,52 @@ public class JavaFileUtils {
 		jfgs.setSetInfo(setSrc.toString());
 		return jfgs;
 	}
+	/**
+	 * 根据报信息生成对应的Java类
+	 * @param tbaleInfo 表信息
+	 * @param convert	表类型转换器
+	 * @return	java类的源码
+	 */
+	public static String createJavaSrc(TableInfo tableInfo,TypeConvertor convert){
+		StringBuilder src=new StringBuilder();
+		Map<String,ColumnInfo> column=tableInfo.getColumns();
+		List<JavaFieldGetSet> javaFields=new ArrayList<>();
+		/**
+		 * 将字段信息-->java的属性信息
+		 */
+		for(ColumnInfo c: column.values()){
+			javaFields.add(createFiledGetSetSRC(c, convert));
+		}
+		//生成package的语句
+		src.append("Package"+DBManager.getConf().getPaPackage()+";\n\n");
+		//生成import的语句
+		src.append("import java.sql.*;\n").append("java.util.*\n\n");
+		//生成类声明的语句
+		src.append("public class "+StringUtils.firstChar2UpperCase(tableInfo.getTname())+"{\n\n");
+		//生成属性列表
+		for(JavaFieldGetSet f:javaFields){
+			src.append(f.getFieldInfo());
+		}
+		//生成get方法列表
+		for(JavaFieldGetSet f:javaFields){
+			src.append(f.getGetInfo());
+		}
+		//生成set方法列表
+		for(JavaFieldGetSet f:javaFields){
+			src.append(f.getSetInfo());
+		}
+		//生成类结束符
+		src.append("}\n");
+		System.out.println(src);
+		return src.toString();
+	}
+	
 	public static void main(String[] args) {
-		ColumnInfo ci=new ColumnInfo("id", "int", 0);
-		JavaFieldGetSet f=createFiledGetSetSRC(ci, new MysqlTypeConvertor());
-		System.out.println(f);
+//		ColumnInfo ci=new ColumnInfo("id", "int", 0);
+//		JavaFieldGetSet f=createFiledGetSetSRC(ci, new MysqlTypeConvertor());
+//		System.out.println(f);
+		Map<String,TableInfo> map=TableContext.tables;
+		TableInfo t=map.get("emp");
+		createJavaSrc(t, new MysqlTypeConvertor());
 	}
 }

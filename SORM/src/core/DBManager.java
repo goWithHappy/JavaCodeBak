@@ -119,4 +119,11 @@ public class DBManager {
 		close(statement);
 		close(conn);
 	}
+	/**
+	 * 对外提供Configuration
+	 * @return
+	 */
+	public static Configuration getConf(){
+		return conf;
+	}
 }
