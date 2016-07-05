@@ -1,0 +1,22 @@
+package utils;
+
+import beans.ColumnInfo;
+import beans.JavaFieldGetSet;
+import core.TypeConvertor;
+
+/**
+ * 封装了Java文件的（源代码）常用的操作
+ * @author Admain
+ *
+ */
+public class JavaFileUtils {
+	/**
+	 * 根据字段生成java属性的信息如 -》private String username;以及相应的set和get的源码
+	 * @param column
+	 * @param convertor
+	 * @return java属性和set/get属性的源码
+	 */
+	public static JavaFieldGetSet createFiledGetSetSRC(ColumnInfo column,TypeConvertor convertor){
+		
+	}
+}

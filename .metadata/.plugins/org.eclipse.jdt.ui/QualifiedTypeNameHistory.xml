@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="abstractFatory.LuckySeat"/>
-<fullyQualifiedTypeName name="abstractFatory.BadEngine"/>
-<fullyQualifiedTypeName name="abstractFatory.BadSeat"/>
-<fullyQualifiedTypeName name="abstractFatory.CarFactory"/>
-<fullyQualifiedTypeName name="abstractFatory.LuxuryCarFactory"/>
-<fullyQualifiedTypeName name="abstractFatory.Engine"/>
-<fullyQualifiedTypeName name="bulder.Engine"/>
-<fullyQualifiedTypeName name="javax.swing.plaf.basic.BasicOptionPaneUI.ButtonActionListener"/>
-<fullyQualifiedTypeName name="java.nio.file.attribute.AclEntry.Builder"/>
 <fullyQualifiedTypeName name="bulder.OrbitalModle"/>
 <fullyQualifiedTypeName name="bulder.EscapeTower"/>
 <fullyQualifiedTypeName name="bulder.AirShipDirector"/>
@@ -45,19 +36,28 @@
 <fullyQualifiedTypeName name="chainOfRespon.LeaveRequest"/>
 <fullyQualifiedTypeName name="java.util.Stack"/>
 <fullyQualifiedTypeName name="com.mysql.jdbc.Connection"/>
-<fullyQualifiedTypeName name="java.sql.ResultSet"/>
 <fullyQualifiedTypeName name="MysqlUtils.MysqlUtil"/>
-<fullyQualifiedTypeName name="java.sql.Statement"/>
 <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
-<fullyQualifiedTypeName name="java.sql.Connection"/>
 <fullyQualifiedTypeName name="java.lang.Object"/>
-<fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="java.sql.Date"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="testORM.Emp"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.lang.SuppressWarnings"/>
 <fullyQualifiedTypeName name="core.Query"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="java.util.Properties"/>
+<fullyQualifiedTypeName name="java.lang.Thread"/>
+<fullyQualifiedTypeName name="beans.Configuration"/>
+<fullyQualifiedTypeName name="java.sql.Statement"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="com.mysql.jdbc.DatabaseMetaData"/>
+<fullyQualifiedTypeName name="java.sql.DatabaseMetaData"/>
+<fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="beans.ColumnInfo"/>
+<fullyQualifiedTypeName name="beans.TableInfo"/>
+<fullyQualifiedTypeName name="core.TableContext"/>
+<fullyQualifiedTypeName name="core.TypeConvertor"/>
 </qualifiedTypeNameHistroy>
