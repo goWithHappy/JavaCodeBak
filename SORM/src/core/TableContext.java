@@ -8,8 +8,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.mysql.jdbc.UpdatableResultSet;
+
 import beans.ColumnInfo;
 import beans.TableInfo;
+import utils.JavaFileUtils;
+import utils.StringUtils;
 
 /**
  * 管理数据库所有表结构和类结构的关系，并根据表结构生成类结构
@@ -22,7 +26,7 @@ public class TableContext {
 	 */
 	public static Map<String,TableInfo> tables=new HashMap<>();
 	/**
-	 * 将po中的Class对象和表信息对象关联起来
+	 * 将po中的Class对象和表信息对象关联起来(便于以后操作)
 	 */
 	public static Map<Class,TableInfo> poClassTableMap=new HashMap<>();
 	private TableContext(){}
@@ -67,9 +71,38 @@ public class TableContext {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		//更新类结构
+		updateJavaPOFile();
+		//将类与CLass对象进行关联
+		loadPOTable();
 	}
 	public static Map<String,TableInfo> getTableInfos(){
 		return tables;
+	}
+	/**
+	 * 根据表结构，更新配置po包下边的java
+	 * @return 
+	 */
+	public static void updateJavaPOFile(){
+		Map<String,TableInfo> map=TableContext.tables;
+		for(TableInfo tableInfo:map.values()){
+			JavaFileUtils.createJavaaPOFile(tableInfo, new MysqlTypeConvertor());
+		}
+	}
+	
+	public static void loadPOTable(){
+		for(TableInfo tableInfo:tables.values()){
+			try {
+				Class c=Class.forName(DBManager.getConf().getPaPackage()
+						+"."+StringUtils.firstChar2UpperCase(tableInfo.getTname()));
+				poClassTableMap.put(c, tableInfo);
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+			
+			
+		}
 	}
 	public static void main(String[] args) {
 		Map<String,TableInfo> tables=TableContext.tables;

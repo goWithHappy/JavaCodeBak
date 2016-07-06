@@ -96,7 +96,6 @@ public class JavaFileUtils {
 		 * 得到包含文件路径的的File对象
 		 */
 		File f=new File(srcPath+poPaclage);
-		System.out.println(srcPath+poPaclage);
 		if(!f.exists()){ //如果指定路径不存在则帮助用户进行创建
 			f.mkdirs();
 		}
@@ -105,6 +104,10 @@ public class JavaFileUtils {
 			bw=new BufferedWriter(new FileWriter(f.getAbsolutePath()+"/"+StringUtils.firstChar2UpperCase(tableInfo.getTname())+".java"));
 			bw.write(src);
 			bw.flush();
+			/**
+			 * 生成日志的打印
+			 */
+			System.out.println("生成表"+tableInfo.getTname()+"对应的java类："+StringUtils.firstChar2UpperCase(tableInfo.getTname())+".java");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}finally{
