@@ -29,7 +29,6 @@ public class TableInfo {
 		this.tname = tname;
 	}
 	public Map<String, ColumnInfo> getColumns() {
-		System.out.println("得到的表信息为"+columns);
 		return columns;
 	}
 	public void setColumns(Map<String, ColumnInfo> columns) {

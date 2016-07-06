@@ -34,7 +34,7 @@ public class TableContext {
 			 * 获取数据库原信息的对象
 			 */
 			DatabaseMetaData dbmd=conn.getMetaData();
-			ResultSet tableRet=dbmd.getTables(null, "%", "%", new String[]{"tables"});
+			ResultSet tableRet=dbmd.getTables(null, "%", "%", new String[]{"TABLE"});
 			/**
 			 * 获取所获得的表信息
 			 */
