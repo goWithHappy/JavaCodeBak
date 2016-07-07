@@ -29,7 +29,7 @@ public class MysqlQuery implements Query{
 			ps=conn.prepareStatement(sql);
 			System.out.println(ps);
 			//给sql设置参数
-			JDBCUtils.hanlerParams(ps, params);
+			JDBCUtils.handleParams(ps, params);
 			count=ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -101,22 +101,9 @@ public class MysqlQuery implements Query{
 		//object {"uname","pwd"}-->update tname set username=?,=wd=? where id=?
 		Class c=obj.getClass();
 		TableInfo tableInfo=TableContext.poClassTableMap.get(c);
-		List<Object> params=new ArrayList<>();
 		ColumnInfo onlyPrimaryKey=tableInfo.getOnlyPriKey();
-		StringBuilder sql=new  StringBuilder("update "+tableInfo.getTname()+" set ");
-		
-		for(String fname:fileName){
-			//得到value值
-			Object fvaue=ReflectUtils.invokeGet(fname, obj);
-			params.add(fvaue);
-			sql.append(fname+"=?,");
-		}
-		sql.setCharAt(sql.length()-1, ' ');
-		sql.append(" where ");
-		sql.append(onlyPrimaryKey.getName()+"=? ");
-		//将id属性进行替换
-		params.add(ReflectUtils.invokeGet(onlyPrimaryKey.getName(), obj));
-		return executeDML(sql.toString(), params.toArray()); 
+		String 
+		return 0;
 	}
 
 	@Override
@@ -140,15 +127,10 @@ public class MysqlQuery implements Query{
 		Emp e=new Emp();
 //		e.setId(4);
 //		new MysqlQuery().delete(e);
-		//insert
-//		e.setAge(12);
-//		e.setBirthday(new java.sql.Date(System.currentTimeMillis()));
-//		e.setEmpname("张三");
-//		e.setSalary((double) 1000);
-//		new MysqlQuery().insert(e);
-		//update
-		e.setAge(22);
-		e.setId(1);
-		new MysqlQuery().update(e, new String[]{"age"});
+		e.setAge(12);
+		e.setBirthday(new java.sql.Date(System.currentTimeMillis()));
+		e.setEmpname("张三");
+		e.setSalary((double) 1000);
+		new MysqlQuery().insert(e);
 	}
 }

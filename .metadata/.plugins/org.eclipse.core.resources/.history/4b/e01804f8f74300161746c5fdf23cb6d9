@@ -146,7 +146,6 @@ public class MysqlQuery implements Query{
 //		e.setEmpname("уехЩ");
 //		e.setSalary((double) 1000);
 //		new MysqlQuery().insert(e);
-		//update
 		e.setAge(22);
 		e.setId(1);
 		new MysqlQuery().update(e, new String[]{"age"});

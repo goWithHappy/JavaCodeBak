@@ -29,7 +29,7 @@ public class MysqlQuery implements Query{
 			ps=conn.prepareStatement(sql);
 			System.out.println(ps);
 			//给sql设置参数
-			JDBCUtils.hanlerParams(ps, params);
+			JDBCUtils.handleParams(ps, params);
 			count=ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -103,7 +103,7 @@ public class MysqlQuery implements Query{
 		TableInfo tableInfo=TableContext.poClassTableMap.get(c);
 		List<Object> params=new ArrayList<>();
 		ColumnInfo onlyPrimaryKey=tableInfo.getOnlyPriKey();
-		StringBuilder sql=new  StringBuilder("update "+tableInfo.getTname()+" set ");
+		StringBuilder sql=new  StringBuilder("update "+tableInfo.getTname()+" set");
 		
 		for(String fname:fileName){
 			//得到value值
@@ -146,9 +146,7 @@ public class MysqlQuery implements Query{
 //		e.setEmpname("张三");
 //		e.setSalary((double) 1000);
 //		new MysqlQuery().insert(e);
-		//update
 		e.setAge(22);
-		e.setId(1);
 		new MysqlQuery().update(e, new String[]{"age"});
 	}
 }
