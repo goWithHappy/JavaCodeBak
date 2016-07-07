@@ -1,0 +1,52 @@
+package FianlSever;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+/**
+ * 增加对各种Servlet的映射，各种类的封装
+ * @author Admain
+ *
+ */
+public class Server {
+	private ServerSocket server=null;
+	private boolean isShutdown=false;
+	public static void main(String[] args) {
+		Server server=new Server();
+		ArduinoServer arduServer=new ArduinoServer();
+		server.start(80);
+		System.out.println("arduino访问端口为8888");
+		System.out.println("Http提供的访问端口为：80");
+		arduServer.start(8888);
+	}
+	/**
+	 *启动服务器
+	 */
+	private void start(int port){
+		try {
+			server=new ServerSocket(port);
+			this.receive();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	/**
+	 * 接受客户端响应
+	 * @throws IOException 
+	 */
+	private void receive() throws IOException{
+		int i=0;
+		while(!isShutdown){
+			try {
+				//获取客户端连接并启动线程
+				new Thread(new Dispatcher(server.accept())).start();
+				System.out.println("创建线程数"+(++i));
+			} catch (IOException e) {
+				e.printStackTrace();
+				isShutdown=true;
+				System.out.println("获取客户端连接请求失败！！");
+			}
+		}
+	}
+}

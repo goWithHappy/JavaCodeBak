@@ -1,0 +1,10 @@
+package FianlSever;
+
+/**
+ * 使用多线程技术同时开启两个端口的服务，对外提供服务
+ * @author Admain
+ *
+ */
+public class ServerEntry {
+
+}

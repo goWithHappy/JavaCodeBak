@@ -13,13 +13,14 @@ import between.CurrentInfo;
  * @author Admain
  *
  */
-public class ArduinoServer {
+public class ArduinoServer implements Server{
 	private ServerSocket server=null;
 	private boolean isShutdown=false;
 	/**
 	 *启动服务器
 	 */
-	private void start(int port){
+	@Override
+	public void start(int port){
 		try {
 			server=new ServerSocket(port);
 			this.receive();
@@ -31,9 +32,10 @@ public class ArduinoServer {
 	 * 接受客户端响应
 	 * @throws IOException 
 	 */
-	private void receive() throws IOException{
+	public void receive() throws IOException{
 		int i=0;
 		String info=null;
+		System.out.println("arduino服务开启成功");
 		while(!isShutdown){
 			Socket client=server.accept();
 			info=anylize(client.getInputStream());
