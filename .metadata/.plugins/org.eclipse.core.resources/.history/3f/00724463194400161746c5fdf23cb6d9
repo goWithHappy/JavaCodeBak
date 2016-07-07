@@ -1,0 +1,10 @@
+package test;
+
+/**
+ * 测试连接池的调用
+ * @author Admain
+ *
+ */
+public class testPool {
+
+}

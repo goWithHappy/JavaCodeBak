@@ -1,0 +1,10 @@
+package pool;
+
+/**
+ * 连接池的类
+ * @author Admain
+ *
+ */
+public class DBConnectionPool {
+
+}
