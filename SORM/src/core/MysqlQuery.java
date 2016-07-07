@@ -1,9 +1,14 @@
 package core;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 
 import beans.ColumnInfo;
 import beans.TableInfo;
+import po.Emp;
+import utils.JDBCUtils;
 import utils.ReflectUtils;
 
 /**
@@ -15,8 +20,21 @@ public class MysqlQuery implements Query{
 
 	@Override
 	public int executeDML(String sql, Object[] params) {
-		// TODO Auto-generated method stub
-		return 0;
+		Connection conn=DBManager.getConnection();
+		int count=0;
+		PreparedStatement ps=null;
+		try {
+			ps=conn.prepareStatement(sql);
+			JDBCUtils.hanlerParams(ps, params);
+			System.out.println(ps);
+			count=ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			DBManager.close(conn,ps); 
+		}
+		
+		return count;
 	}
 
 	@Override
@@ -74,5 +92,13 @@ public class MysqlQuery implements Query{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	/**
+	 * ²âÊÔµÄmain·½·¨
+	 */
+	public static void main(String[] args) {
+		Emp e=new Emp();
+		e.setId(3);
+		
+		new MysqlQuery().delete(e);
+	}
 }
