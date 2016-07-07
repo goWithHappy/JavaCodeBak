@@ -1,0 +1,15 @@
+package FianlSever;
+
+public class GetValueServlet extends Servlet{
+
+	@Override
+	public void doGet(Request req, Response rep) {
+		
+	}
+
+	@Override
+	public void doPost(Request req, Response rep) {
+		
+	}
+
+}

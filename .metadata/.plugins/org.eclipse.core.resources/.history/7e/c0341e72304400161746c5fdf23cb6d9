@@ -1,0 +1,10 @@
+package between;
+
+/**
+ *提供对外进行数据库访问的方法
+ * @author Admain
+ *
+ */
+public class BackInfo {
+	
+}

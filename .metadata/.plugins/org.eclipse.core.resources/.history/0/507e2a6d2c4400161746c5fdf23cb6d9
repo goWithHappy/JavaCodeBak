@@ -1,0 +1,18 @@
+package between;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class InfoQueue {
+	private static Queue<String[]> queryInfo=new LinkedList<>();
+	/**
+	 * 每次向InfoQueue队列中放入一个元素
+	 * @param info
+	 */
+	public static void offer(String[] info){
+		if(info!=null&&info.length>0)
+		queryInfo.offer(info);
+	}
+	public String[] po
+}

@@ -1,0 +1,13 @@
+package between;
+
+public class CurrentInfo {
+	private static String currentInfo=null;
+
+	public static String getCurrentInfo() {
+		return currentInfo;
+	}
+
+	public static void setCurrentInfo(String currentInfo) {
+		CurrentInfo.currentInfo = currentInfo;
+	}
+}

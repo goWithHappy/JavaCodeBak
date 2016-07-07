@@ -1,0 +1,16 @@
+package between;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 记录发过来的最新的一条信息
+ * @author Admain
+ *
+ */
+public class CurrentInfo {
+	private static List list=new ArrayList<>();
+	public void add(String Info){
+		
+	}
+}

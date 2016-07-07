@@ -5,6 +5,9 @@ import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import between.BackInfo;
+import between.CurrentInfo;
+
 /**
  * 增加对各种Servlet的映射，各种类的封装
  * @author Admain
@@ -30,11 +33,19 @@ public class ArduinoServer {
 	 */
 	private void receive() throws IOException{
 		int i=0;
-		String info;
+		String info=null;
 		while(!isShutdown){
 			Socket client=server.accept();
 			info=anylize(client.getInputStream());
-			System.out.println("当前经度");
+			if(info!=null){
+				CurrentInfo.add(info);
+				System.out.println("得到的坐标信息为："+info);
+				/**
+				 * 将收到的信息写入到数据库中进行备份
+				 */
+				String [] cureentInfo=info.split(",");
+				BackInfo.insert(cureentInfo);
+			}
 		}
 	}
 	//接受请求信息，并解析

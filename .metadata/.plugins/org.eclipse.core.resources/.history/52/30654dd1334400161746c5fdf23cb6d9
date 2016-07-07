@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<servlet>
+	<name>login</name>
+	<servlet-name>BetterSever.LoginServlet</servlet-name>
+</servlet>
+<mapping>
+	<name>login</name>
+	<url-pattern>/login</url-pattern>
+</mapping>
+
+<servlet>
+	<name>reg</name>
+	<servlet-name>BetterSever.RegisterServlet</servlet-name>
+</servlet>
+<mapping>
+	<name>reg</name>
+	<url-pattern>/reg</url-pattern>
+</mapping>

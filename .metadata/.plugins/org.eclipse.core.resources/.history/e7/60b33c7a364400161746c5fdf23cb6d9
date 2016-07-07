@@ -1,0 +1,20 @@
+package FianlSever;
+
+public class GetValueServlet extends Servlet{
+
+	@Override
+	public void doGet(Request req, Response rep) {
+		int count=1; //记录客户端所需要的信息的条数
+		String sum=null;
+		//从参数中获得客户端所需要的信息条数
+		if((sum=req.getParameter("count"))!=null){
+			count=Integer.parseInt(sum);
+		}
+	}
+
+	@Override
+	public void doPost(Request req, Response rep) {
+		
+	}
+
+}

@@ -10,11 +10,11 @@
 	</mapping>
 	
 	<servlet>
-		<servlet-name>reg</servlet-name>
-		<servlet-class>FianlSever.RegisterServlet</servlet-class>
+		<servlet-name>getValue</servlet-name>
+		<servlet-class>FianlSever.GetValueServlet</servlet-class>
 	</servlet>
 	<mapping>
-		<servlet-name>reg</servlet-name>
-		<url-pattern>/reg</url-pattern>
+		<servlet-name>getValue</servlet-name>
+		<url-pattern>/getValue</url-pattern>
 	</mapping>
 </web-app>

@@ -1,0 +1,28 @@
+package between;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 用来记录客户端发来的信息
+ * @author Admain
+ *
+ */
+public class CurrentInfo {
+	private static List<String> list=new ArrayList<>();
+	/**
+	 * 记录发过来的最新信息，并且始终保持100条最新的记录
+	 * @param Info
+	 */
+	public static void add(String Info){
+		if(Info!=null){
+			list.add(list);
+		}
+		if(list.size()>100){
+			list.remove(list.size()-1);
+		}
+	}
+	public static String getNewInfo(){
+		return (String) list.get(0);
+	}
+}

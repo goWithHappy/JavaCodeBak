@@ -1,0 +1,19 @@
+package between;
+
+import core.Query;
+import core.QueryFectory;
+import core.TableContext;
+
+/**
+ *提供对外进行数据库访问的方法
+ * @author Admain
+ *
+ */
+public class BackInfo {
+	private Query q=QueryFectory.createQuery();
+	public void insert(String[] info){
+		if(info!=null){
+			
+		}
+	}
+}

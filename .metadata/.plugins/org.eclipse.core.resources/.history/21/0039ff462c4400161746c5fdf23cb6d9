@@ -1,0 +1,6 @@
+package between;
+
+public class CurrentInfo {
+	private static String currentInfo=null;
+	
+}

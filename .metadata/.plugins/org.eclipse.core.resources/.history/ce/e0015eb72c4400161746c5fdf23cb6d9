@@ -1,0 +1,18 @@
+package between;
+
+/**
+ * 记录发过来的最新的一条信息
+ * @author Admain
+ *
+ */
+public class CurrentInfo {
+	private static String currentInfo=null;
+
+	public static String getCurrentInfo() {
+		return currentInfo;
+	}
+
+	public static void setCurrentInfo(String currentInfo) {
+		CurrentInfo.currentInfo = currentInfo;
+	}
+}
