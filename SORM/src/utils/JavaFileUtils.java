@@ -1,5 +1,9 @@
 package utils;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -62,9 +66,9 @@ public class JavaFileUtils {
 			javaFields.add(createFiledGetSetSRC(c, convert));
 		}
 		//生成package的语句
-		src.append("Package"+DBManager.getConf().getPaPackage()+";\n\n");
+		src.append("package "+DBManager.getConf().getPaPackage()+";\n\n");
 		//生成import的语句
-		src.append("import java.sql.*;\n").append("java.util.*\n\n");
+		src.append("import java.sql.*;\n").append("import java.util.*;\n\n");
 		//生成类声明的语句
 		src.append("public class "+StringUtils.firstChar2UpperCase(tableInfo.getTname())+"{\n\n");
 		//生成属性列表
@@ -81,16 +85,52 @@ public class JavaFileUtils {
 		}
 		//生成类结束符
 		src.append("}\n");
-		System.out.println(src);
 		return src.toString();
 	}
 	
+	public static void createJavaaPOFile(TableInfo tableInfo,TypeConvertor convert){
+		String src=createJavaSrc(tableInfo, convert);
+		String srcPath=DBManager.getConf().getSrcPath();
+		String poPaclage=DBManager.getConf().getPaPackage().replaceAll("\\.", "/");
+		/**
+		 * 得到包含文件路径的的File对象
+		 */
+		File f=new File(srcPath+poPaclage);
+		if(!f.exists()){ //如果指定路径不存在则帮助用户进行创建
+			f.mkdirs();
+		}
+		BufferedWriter bw=null;
+		try {
+			bw=new BufferedWriter(new FileWriter(f.getAbsolutePath()+"/"+StringUtils.firstChar2UpperCase(tableInfo.getTname())+".java"));
+			bw.write(src);
+			bw.flush();
+			/**
+			 * 生成日志的打印
+			 */
+			System.out.println("生成表"+tableInfo.getTname()+"对应的java类："+StringUtils.firstChar2UpperCase(tableInfo.getTname())+".java");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				bw.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	} 
 	public static void main(String[] args) {
 //		ColumnInfo ci=new ColumnInfo("id", "int", 0);
 //		JavaFieldGetSet f=createFiledGetSetSRC(ci, new MysqlTypeConvertor());
 //		System.out.println(f);
+//		Map<String,TableInfo> map=TableContext.tables;
+//		TableInfo t=map.get("emp");
+//		createJavaaPOFile(t, new MysqlTypeConvertor());
+		/**
+		 * 循环生成所有的表
+		 */
 		Map<String,TableInfo> map=TableContext.tables;
-		TableInfo t=map.get("emp");
-		createJavaSrc(t, new MysqlTypeConvertor());
+		for(TableInfo tableInfo:map.values()){
+			createJavaaPOFile(tableInfo, new MysqlTypeConvertor());
+		}
 	}
 }
