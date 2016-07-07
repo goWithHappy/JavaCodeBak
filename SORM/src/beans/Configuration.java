@@ -34,6 +34,16 @@ public class Configuration {
 	 * 扫描生成java类的包（po：Persistence object 持久化对象）
 	 */
 	private String paPackage;
+	/**
+	 * 项目正在使用的查询类的路径
+	 */
+	private String queryClass;
+	public String getQueryClass() {
+		return queryClass;
+	}
+	public void setQueryClass(String queryClass) {
+		this.queryClass = queryClass;
+	}
 	public String getDriver() {
 		return driver;
 	}
@@ -89,4 +99,17 @@ public class Configuration {
 	}
 	public Configuration() {
 	}
+	public Configuration(String driver, String url, String user, String pwd, String usingDB, String srcPath,
+			String paPackage, String queryClass) {
+		super();
+		this.driver = driver;
+		this.url = url;
+		this.user = user;
+		this.pwd = pwd;
+		this.usingDB = usingDB;
+		this.srcPath = srcPath;
+		this.paPackage = paPackage;
+		this.queryClass = queryClass;
+	}
+	
 }

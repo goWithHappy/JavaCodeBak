@@ -1,0 +1,35 @@
+package core;
+/**
+ * 根据配置信息返回Query对象的工厂类
+ * @author Admain
+ *
+ */
+public class QueryFectory {
+	private static QueryFectory factory=new QueryFectory();
+	private static Class c=null;
+	static{
+		//得到配置文件中对应的class类
+		try {
+			Class c=Class.forName(DBManager.getConf().getQueryClass());
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * 根据不同的配置信息创建不同的Query对象
+	 * @return
+	 */
+	public Query createQuery(){
+		try {
+			return (Query) c.newInstance();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+}
