@@ -1,10 +1,16 @@
 package core;
 
+<<<<<<< HEAD
 import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+=======
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+>>>>>>> bug
 import java.util.List;
 
 import beans.ColumnInfo;
@@ -27,6 +33,7 @@ public class MysqlQuery implements Query{
 		PreparedStatement ps=null;
 		try {
 			ps=conn.prepareStatement(sql);
+<<<<<<< HEAD
 			System.out.println(ps);
 			//给sql设置参数
 			JDBCUtils.handleParams(ps, params);
@@ -34,10 +41,22 @@ public class MysqlQuery implements Query{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+=======
+			JDBCUtils.hanlerParams(ps, params);
+			System.out.println(ps);
+			count=ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			DBManager.close(conn,ps); 
+		}
+		
+>>>>>>> bug
 		return count;
 	}
 
 	@Override
+<<<<<<< HEAD
 	public void insert(Object obj) {
 		//obj->insert into emp values(？，？，？)
 		Class c=obj.getClass();
@@ -68,6 +87,11 @@ public class MysqlQuery implements Query{
 			sql.setCharAt(sql.length()-1, ')');
 			
 			executeDML(sql.toString(), params.toArray());
+=======
+	public void insert(Object object) {
+		// 
+		
+>>>>>>> bug
 	}
 
 	@Override
@@ -98,8 +122,12 @@ public class MysqlQuery implements Query{
 
 	@Override
 	public int update(Object obj, String[] fileName) {
+<<<<<<< HEAD
 		//object {"uname","pwd"}-->update tname set username=?,=wd=? where id=?
 		
+=======
+		// TODO Auto-generated method stub
+>>>>>>> bug
 		return 0;
 	}
 
@@ -120,6 +148,7 @@ public class MysqlQuery implements Query{
 		// TODO Auto-generated method stub
 		return null;
 	}
+<<<<<<< HEAD
 	public static void main(String[] args) {
 		Emp e=new Emp();
 //		e.setId(4);
@@ -129,5 +158,15 @@ public class MysqlQuery implements Query{
 		e.setEmpname("张三");
 		e.setSalary((double) 1000);
 		new MysqlQuery().insert(e);
+=======
+	/**
+	 * 测试的main方法
+	 */
+	public static void main(String[] args) {
+		Emp e=new Emp();
+		e.setId(3);
+		
+		new MysqlQuery().delete(e);
+>>>>>>> bug
 	}
 }

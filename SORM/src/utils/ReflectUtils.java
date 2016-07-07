@@ -16,7 +16,11 @@ public class ReflectUtils {
 	 * @return
 	 */
 	public static Object invokeGet(String fileName,Object obj){
+<<<<<<< HEAD
 		Class<? extends Object> c=obj.getClass();
+=======
+		Class c=obj.getClass();
+>>>>>>> bug
 		try {
 			Method m=c.getMethod("get"+StringUtils.firstChar2UpperCase(fileName), null);
 			try {
