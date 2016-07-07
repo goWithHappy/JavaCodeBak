@@ -1,0 +1,16 @@
+package vo;
+
+/**
+ * 针对特殊的查询所使用的bean
+ * @author Admain
+ *
+ */
+public class EmpVo {
+	private Integer id;
+	private String empname;
+	private Double xinxshui;
+	private Integer age;
+	private String deptName;
+	private String deptAddr;
+	
+}

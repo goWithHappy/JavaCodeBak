@@ -53,7 +53,14 @@ public interface Query {
 	 * @param params sql参数
 	 * @return 查询到的结果
 	 */
-	public Object queryUniqueRow(String sql,Object[] params);
+	public Object queryUniqueRow(String sql,Class clazz,Object[] params);
+	/**
+	 * 查询返回一行一列的value值（已经确定查询结果是一行）
+	 * @param sql
+	 * @param params
+	 * @return
+	 */
+	public Object queryValue(String sql,Object[] params);
 	/**
 	 * 查询返回一行一列
 	 * @param sql 查询语句

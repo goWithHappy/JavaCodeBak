@@ -160,15 +160,38 @@ public class MysqlQuery implements Query{
 	}
 
 	@Override
-	public Object queryUniqueRow(String sql, Object[] params) {
-		// TODO Auto-generated method stub
-		return null;
+	public Object queryUniqueRow(String sql, Class clazz,Object[] params) {
+		List list=queryRows(sql, clazz, params);
+		//如果不为空切查询结果大于1则返回第一行
+		return (list!=null&&list.size()>0)?null:list.get(0);
 	}
 
 	@Override
 	public Number queryNumber(String sql, Object[] params) {
-		// TODO Auto-generated method stub
-		return null;
+		return (Number)queryValue(sql, params);
+	}
+	@Override
+	public Object queryValue(String sql, Object[] params) {
+		Connection conn=DBManager.getConnection();
+		Object value=null; //查询的唯一结果值
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		try {
+			ps=conn.prepareStatement(sql);
+			//给sql设置参数
+			JDBCUtils.hanlerParams(ps, params);
+			rs=ps.executeQuery();
+			ResultSetMetaData rsmd=rs.getMetaData();
+			//多行
+			while(rs.next()){
+				value=rs.getObject(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		return value;
 	}
 	public static void main(String[] args) {
 		Emp e=new Emp();
@@ -185,9 +208,14 @@ public class MysqlQuery implements Query{
 //		e.setId(1);
 //		new MysqlQuery().update(e, new String[]{"age"});
 		//查询多行
-		List<Emp>list=new MysqlQuery().queryRows("select id,empname,age from emp where age<? and salary<?", Emp.class, new Object []{100,5000});
-		for(Emp e1:list){
-			System.out.println(e1.getEmpname());
-		}
+//		List<Emp>list=new MysqlQuery().queryRows("select id,empname,age from emp where age<? and salary<?", Emp.class, new Object []{100,5000});
+//		for(Emp e1:list){
+//			System.out.println(e1.getEmpname());
+//		}
+		//test Queryvalue
+		Object obj=new MysqlQuery().queryValue("select count(*) from emp where salary>?", new Object[]{1000});
+		System.out.println(obj);
+		
 	}
+
 }
