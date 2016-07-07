@@ -1,0 +1,10 @@
+package utils;
+
+/**
+ * 封装类反射常用的操作
+ * @author Admain
+ *
+ */
+public class ReflectUtils {
+
+}

@@ -1,9 +1,0 @@
-package command;
-/**
- * 命令的调用者和发起者
- * @author Admain
- *
- */
-public class Invoke {
-	private Command command;
-}

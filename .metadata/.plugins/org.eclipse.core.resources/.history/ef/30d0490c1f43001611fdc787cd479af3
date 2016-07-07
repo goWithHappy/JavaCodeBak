@@ -1,0 +1,43 @@
+Package po;
+
+import java.sql.*;
+java.util.*
+
+public class Emp{
+
+	private Integer id;
+	private java.sql.Date birthday;
+	private Integer age;
+	private String empname;
+	private Double salary;
+	public Integer getId(){
+		return id;
+	}
+	public java.sql.Date getBirthday(){
+		return birthday;
+	}
+	public Integer getAge(){
+		return age;
+	}
+	public String getEmpname(){
+		return empname;
+	}
+	public Double getSalary(){
+		return salary;
+	}
+	public void setId(Integer id){
+		this.id=id;
+	}
+	public void setBirthday(java.sql.Date birthday){
+		this.birthday=birthday;
+	}
+	public void setAge(Integer age){
+		this.age=age;
+	}
+	public void setEmpname(String empname){
+		this.empname=empname;
+	}
+	public void setSalary(Double salary){
+		this.salary=salary;
+	}
+}

@@ -1,5 +1,7 @@
 package adapter;
 
+import bridge.Brand;
+
 /**
  * 客户端类相当于笔记本,本身是兼容target接口的
  * @author Admain

@@ -1,6 +1,0 @@
-package mediator;
-
-public interface Department {
-	void selfAction();//做自己的本分工作
-	void outAction();//向总经理发出协调申请
-}

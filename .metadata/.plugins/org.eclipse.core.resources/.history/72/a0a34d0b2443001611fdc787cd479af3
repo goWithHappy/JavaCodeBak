@@ -1,0 +1,60 @@
+package core;
+
+import java.util.List;
+
+/**
+ * 针对mysql数据库的查询
+ * @author Admain
+ *
+ */
+public class MysqlQuery implements Query{
+
+	@Override
+	public int executeDML(String sql, Object[] params) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void insert(Object object) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(Class clazz, int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(Object obj) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int update(Object obj, String[] fileName) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List queryRows(String sql, Class clazz, Object[] params) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Object queryUniqueRow(String sql, Object[] params) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Number queryNumber(String sql, Object[] params) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
