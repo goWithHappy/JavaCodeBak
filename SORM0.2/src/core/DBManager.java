@@ -46,7 +46,7 @@ public class DBManager {
 		conf.setQueryClass(pros.getProperty("queryClass"));
 		conf.setPoolMaxSize(new Integer(Integer.parseInt(pros.getProperty("poolMaxSize"))));
 		conf.setPoolMinSize(Integer.parseInt(pros.getProperty("poolMinSize")));
-		System.out.println();
+		
 	}
 	/**
 	 * 获得Connection对象

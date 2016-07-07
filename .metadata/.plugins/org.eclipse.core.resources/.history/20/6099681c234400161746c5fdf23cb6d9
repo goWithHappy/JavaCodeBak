@@ -1,0 +1,8 @@
+import core.TableContext;
+
+public class Test {
+	public static void main(String[] args) {
+		//通过方法生成po类
+		TableContext.updateJavaPOFile();
+	}
+}

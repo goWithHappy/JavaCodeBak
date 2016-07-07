@@ -1,0 +1,26 @@
+import core.Query;
+import core.QueryFectory;
+import po.Emp;
+
+public class Test {
+	public static void main(String[] args) {
+//		//通过方法生成po类
+//		TableContext.updateJavaPOFile();
+		//通过SORM来进行插入操作
+		testDelete();
+	}
+	public static void testDelete(){
+		Emp e=new Emp();
+		e.setId(7);
+		Query q=QueryFectory.createQuery();
+		q.delete(e);
+	}
+	public static void testInsert(){
+		Emp e=new Emp();
+		e.setAge(18);
+		e.setBirthday(new java.sql.Date(System.currentTimeMillis()));
+		e.setEmpname("Tom");
+		Query q=QueryFectory.createQuery();
+		q.insert(e);
+	}
+}

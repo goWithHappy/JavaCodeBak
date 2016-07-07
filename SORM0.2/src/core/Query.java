@@ -206,7 +206,7 @@ public abstract class Query implements Cloneable{
 	public Object queryUniqueRow(String sql, Class clazz,Object[] params) {
 		List list=queryRows(sql, clazz, params);
 		//如果不为空切查询结果大于1则返回第一行
-		return (list!=null&&list.size()>0)?null:list.get(0);
+		return (list!=null&&list.size()>0)?list.get(0):null;
 	}
 	/**
 	 * 查询返回一行一列的value值（已经确定查询结果是一行）
@@ -244,6 +244,19 @@ public abstract class Query implements Cloneable{
 		}
 	
 		return value;
+	}
+	/**
+	 * 通过主键来进行结果的查询
+	 * @param clazz
+	 * @param obj
+	 * @return
+	 */
+	public Object queryById(Class clazz,Object obj){
+		TableInfo tableInfo=TableContext.poClassTableMap.get(clazz);
+		//获取主键
+		ColumnInfo onlyPrikey=tableInfo.getOnlyPriKey();
+		String sql="select * from "+tableInfo.getTname()+" where "+onlyPrikey.getName()+"=? ";
+		return queryUniqueRow(sql, clazz, new Object[]{"id"});
 	}
 	/**
 	 * 分页查询

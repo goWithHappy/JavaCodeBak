@@ -23,6 +23,10 @@ public class QueryFectory {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			//初始化TableConext
+			System.out.println(TableContext.class);
+			//初始化DBManager
+			System.out.println(DBManager.class);
 	}
 	
 	/**
