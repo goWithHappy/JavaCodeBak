@@ -1,8 +1,11 @@
 package core;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +15,7 @@ import beans.TableInfo;
 import po.Emp;
 import utils.JDBCUtils;
 import utils.ReflectUtils;
+import utils.StringUtils;
 
 /**
  * 针对mysql数据库的查询
@@ -121,8 +125,38 @@ public class MysqlQuery implements Query{
 
 	@Override
 	public List queryRows(String sql, Class clazz, Object[] params) {
-		// TODO Auto-generated method stub
-		return null;
+		Connection conn=DBManager.getConnection();
+		List list=null; //存储查询结果的容器
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		
+		try {
+			ps=conn.prepareStatement(sql);
+			//给sql设置参数
+			JDBCUtils.hanlerParams(ps, params);
+			System.out.println(ps);
+			rs=ps.executeQuery();
+			ResultSetMetaData rsmd=rs.getMetaData();
+			
+			//多行
+			while(rs.next()){
+				if(list==null){
+					list=new ArrayList();
+				}
+				Object rowObj=clazz.newInstance();  //调用javaBean的无参构造器
+				//多列
+				for(int i=0;i<rsmd.getColumnCount();i++){
+					String columnName=rsmd.getColumnLabel(i+1);
+					Object columnValue=rs.getObject(i+1);
+					//通过反射来调用set方法来进行属性的设置
+					ReflectUtils.invokeSet(rowObj, columnName, columnValue);
+				}
+				list.add(rowObj);
+			}
+		} catch (SQLException | InstantiationException | IllegalAccessException e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 	@Override
@@ -147,8 +181,13 @@ public class MysqlQuery implements Query{
 //		e.setSalary((double) 1000);
 //		new MysqlQuery().insert(e);
 		//update
-		e.setAge(22);
-		e.setId(1);
-		new MysqlQuery().update(e, new String[]{"age"});
+//		e.setAge(22);
+//		e.setId(1);
+//		new MysqlQuery().update(e, new String[]{"age"});
+		//查询多行
+		List<Emp>list=new MysqlQuery().queryRows("select id,empname,age from emp where age<? and salary<?", Emp.class, new Object []{100,5000});
+		for(Emp e1:list){
+			System.out.println(e1.getEmpname());
+		}
 	}
 }
