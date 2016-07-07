@@ -98,7 +98,8 @@ public class MysqlQuery implements Query{
 
 	@Override
 	public int update(Object obj, String[] fileName) {
-		// TODO Auto-generated method stub
+		//object {"uname","pwd"}-->update tname set username=?,=wd=? where id=?
+		
 		return 0;
 	}
 
