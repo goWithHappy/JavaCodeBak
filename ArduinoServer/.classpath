@@ -3,6 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="lib" path="E:/技术文档/常见jar/mysql-connector-java-5.1.37-bin.jar"/>
-	<classpathentry kind="lib" path="E:/技术文档/常见jar/SORM0.1/SORM0.2.jar" sourcepath="/SORM0.2"/>
+	<classpathentry kind="lib" path="C:/Users/Admain/Desktop/SORM0.2.jar" sourcepath="/SORM0.2"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

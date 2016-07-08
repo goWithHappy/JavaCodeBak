@@ -1,0 +1,47 @@
+package FianlSever;
+
+import java.util.List;
+
+import between.BackInfo;
+import between.CurrentInfo;
+
+public class GetValueServlet extends Servlet{
+
+	@Override
+	public void doGet(Request req, Response rep) {
+		String info=getValue(req);
+		if(info!=null){
+			//将所得到的信息返回到客户端
+			System.out.println("得到的Info是"+info);
+			rep.print(info);
+		}
+		else{
+			rep.print("没有得到info的值");
+		}
+	}
+
+	@Override
+	public void doPost(Request req, Response rep) {
+		doGet(req,rep);
+	}
+	public String getValue(Request req){
+		int count=1; //记录客户端所需要的信息的条数
+		StringBuilder info=null;
+		String sum=null;
+		//从参数中获得客户端所需要的信息条数
+		if((sum=req.getParameter("count"))!=null){
+			count=Integer.parseInt(sum);
+		}
+		if(count==1){
+			info=new StringBuilder(BackInfo.getOneInfo());
+			return info.toString();
+		}else{
+			List list=BackInfo.getInfo(count);
+			for(Object l:list){
+				info.append((String)l+"|");
+			}
+			return info.toString();
+		}
+	}
+
+}

@@ -4,14 +4,21 @@ import java.util.List;
 
 import between.BackInfo;
 import between.CurrentInfo;
+import po.Pointinfo;
 
 public class GetValueServlet extends Servlet{
 
 	@Override
 	public void doGet(Request req, Response rep) {
 		String info=getValue(req);
-		//将所得到的信息返回到客户端
-		rep.print(info);
+		if(info!=null){
+			//将所得到的信息返回到客户端
+			System.out.println("得到的Info是"+info);
+			rep.print(info);
+		}
+		else{
+			rep.print("没有得到info的值");
+		}
 	}
 
 	@Override
@@ -27,12 +34,23 @@ public class GetValueServlet extends Servlet{
 			count=Integer.parseInt(sum);
 		}
 		if(count==1){
-			info=new StringBuilder(CurrentInfo.getOneInfo());
+			info=new StringBuilder(BackInfo.getOneInfo());
+			info.append(";");
 			return info.toString();
 		}else{
-			List list=CurrentInfo.getInfo(count);
-			for(Object l:list){
-				info.append((String)l+"|");
+			info=new StringBuilder();
+			List<Pointinfo> list=BackInfo.getInfo(count);
+			if(list!=null){
+				//将得到的popoint对象进行传输
+				for(Pointinfo po:list){
+					info.append(po.getX()+","+po.getY()+"|");
+					System.out.println("得到的经纬度为"+po.getX()+","+po.getY()+"|");
+				}
+				info.deleteCharAt(info.length()-1);
+				info.append(';');
+			}
+			else{
+				info.append("数据库中没有备份的值");
 			}
 			return info.toString();
 		}

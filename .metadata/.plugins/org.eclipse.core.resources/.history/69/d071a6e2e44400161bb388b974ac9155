@@ -1,0 +1,12 @@
+<html>
+	<head>
+		<title>test Post</title>
+	</head>
+	<body>
+			<form method="post" action="http://localhost80/login">
+				ĞÕÃû<input type="text" name="uname" id="name"/>
+			ÃÜÂë:<input type="password" name="pwd" id="pass"/>
+				<input type="submit" value="È·ÈÏ"/>
+			</form>
+	</body>	
+</html>

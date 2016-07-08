@@ -8,8 +8,11 @@ package FianlSever;
  */
 public abstract class Servlet {
 	public void service(Request req,Response rep){
+		/*
+		 * 增加这两个函数会造成结果的二次打印
+		 */
 		this.doPost(req,rep);
-		this.doGet(req,rep);
+//		this.doGet(req,rep);
 	}
 	public abstract void doGet(Request req,Response rep);
 	public abstract void doPost(Request req,Response rep);

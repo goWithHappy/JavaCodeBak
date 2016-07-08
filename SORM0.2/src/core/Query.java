@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.management.MBeanServerDelegateMBean;
+
 import beans.ColumnInfo;
 import beans.TableInfo;
 import utils.JDBCUtils;
@@ -37,7 +39,9 @@ public abstract class Query implements Cloneable{
 		try {
 			ps=conn.prepareStatement(sql);
 			//给sql设置参数
+			if(params!=null){
 			JDBCUtils.hanlerParams(ps, params);
+			}
 			rs=ps.executeQuery();
 			return back.doExecute(conn, ps, rs);
 		} catch (SQLException e) {
@@ -64,6 +68,8 @@ public abstract class Query implements Cloneable{
 			count=ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			DBManager.close(conn, ps);  //将连接对象归还至连接池
 		}
 		return count;
 	}

@@ -35,7 +35,7 @@ public class ArduinoServer implements Server{
 	public void receive() throws IOException{
 		int i=0;
 		String info=null;
-		System.out.println("arduino服务开启成功");
+		System.out.println("arduino服务在开启成功");
 		while(!isShutdown){
 			Socket client=server.accept();
 			info=anylize(client.getInputStream());

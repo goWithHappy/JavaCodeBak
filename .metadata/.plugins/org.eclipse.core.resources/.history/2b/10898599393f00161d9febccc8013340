@@ -1,9 +1,0 @@
-package beans;
-/**
- * 封装表中一个字段的信息
- * @author Admain
- *
- */
-public class ColumnInfo {
-
-}

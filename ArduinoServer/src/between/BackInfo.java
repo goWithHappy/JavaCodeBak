@@ -41,9 +41,9 @@ public class BackInfo {
 	 * @param index
 	 * @return
 	 */
-	public static List getInfo(int index){
+	public static List<Pointinfo> getInfo(int index){
 		String sql="select * from pointinfo order by id desc limit 0,"+index;
-		List list=q.queryRows(sql, Pointinfo.class, null);
+		List<Pointinfo> list=q.queryRows(sql, Pointinfo.class, null);
 		return list;
 	}
 }
